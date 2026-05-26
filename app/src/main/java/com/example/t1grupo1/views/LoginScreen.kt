@@ -1,4 +1,4 @@
-package com.example.t1grupo1
+package com.example.t1grupo1.views
 
 import android.util.Patterns
 import androidx.compose.foundation.Image
@@ -35,7 +35,8 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.t1grupo1.ui.theme.T1Grupo1Theme
+import com.example.t1grupo1.R
+import com.example.t1grupo1.ui.theme.*
 
 
 @Composable
@@ -52,8 +53,6 @@ fun LoginScreen(
     var mostrarExito by rememberSaveable { mutableStateOf(false) }
     var mensajeExito by rememberSaveable { mutableStateOf("") }
 
-    val verdePrincipal = Color(0xFF2E7D32)
-
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -65,38 +64,58 @@ fun LoginScreen(
         Image(
             painter = painterResource(id = R.drawable.logo),
             contentDescription = null,
-            modifier = Modifier.size(130.dp)
+            modifier = Modifier.size(230.dp)
         )
 
-        Spacer(modifier = Modifier.height(12.dp))
+        Spacer(modifier = Modifier.height(2.dp))
 
         Text(
             text = "FOOD TRAVEL APP",
             fontSize = 26.sp,
             fontWeight = FontWeight.Bold,
             textAlign = TextAlign.Center,
-            color = verdePrincipal
+            color = VerdeFood
         )
 
         Spacer(modifier = Modifier.height(32.dp))
 
         OutlinedTextField(
             value = correo,
-            onValueChange = { correo = it },
+            onValueChange = { correo = it.replace("\n","") },
             label = { Text("Correo") },
             modifier = Modifier.fillMaxWidth(),
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email)
+            singleLine = true,
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
+            shape = RoundedCornerShape(12.dp),
+            colors = OutlinedTextFieldDefaults.colors(
+                focusedBorderColor = VerdeFood,
+                unfocusedBorderColor = VerdeFood.copy(alpha = 0.5f),
+                focusedLabelColor = VerdeFood,
+                cursorColor = VerdeFood,
+                focusedTextColor = Color.Black,
+                unfocusedTextColor = Color.Black
+            )
         )
 
         Spacer(modifier = Modifier.height(16.dp))
 
         OutlinedTextField(
             value = contrasena,
-            onValueChange = { contrasena = it },
+            onValueChange = { contrasena = it.replace("\n", "") },
             label = { Text("Contraseña") },
             modifier = Modifier.fillMaxWidth(),
+            singleLine = true,
             visualTransformation = PasswordVisualTransformation(),
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password)
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password) ,
+            shape = RoundedCornerShape(12.dp),
+            colors = OutlinedTextFieldDefaults.colors(
+                focusedBorderColor = VerdeFood,
+                unfocusedBorderColor = VerdeFood.copy(alpha = 0.5f),
+                focusedLabelColor = VerdeFood,
+                cursorColor = VerdeFood,
+                focusedTextColor = Color.Black,
+                unfocusedTextColor = Color.Black
+            )
         )
 
         Spacer(modifier = Modifier.height(28.dp))
@@ -115,8 +134,16 @@ fun LoginScreen(
                 }
             },
             modifier = Modifier.fillMaxWidth()
+                                .height(52.dp),
+            shape = RoundedCornerShape(12.dp),
+            colors = ButtonDefaults.buttonColors(
+                containerColor = VerdeFood
+            )
+
         ) {
-            Text("INGRESAR")
+            Text(text ="INGRESAR",color = Color.White,
+                fontWeight = FontWeight.Bold)
+
         }
 
         Spacer(modifier = Modifier.height(12.dp))
@@ -126,34 +153,103 @@ fun LoginScreen(
                 onRegistrarClick()
             },
             modifier = Modifier.fillMaxWidth()
+                                .height(52.dp),
+            shape = RoundedCornerShape(12.dp),
+            colors = ButtonDefaults.outlinedButtonColors(
+                contentColor = VerdeFood
+            )
         ) {
-            Text("REGISTRAR")
+            Text(text = "REGISTRAR",
+                color = VerdeFood,
+                fontWeight = FontWeight.Bold)
         }
     }
 
     if (mostrarError) {
         AlertDialog(
-            onDismissRequest = { mostrarError = false },
-            confirmButton = {
-                TextButton(onClick = { mostrarError = false }) {
-                    Text("Aceptar")
-                }
+            onDismissRequest = {
+                mostrarError = false
             },
-            title = { Text("Error") },
-            text = { Text(mensajeError) }
+
+            containerColor = FondoDialog,
+
+            shape = RoundedCornerShape(20.dp),
+
+            title = {
+                Text(
+                    text = "Error de validación",
+                    color = RojoError,
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 20.sp
+                )
+            },
+
+            text = {
+                Text(
+                    text = mensajeError,
+                    color = GrisTexto
+                )
+            },
+
+            confirmButton = {
+
+                TextButton(
+                    onClick = {
+                        mostrarError = false
+                    }
+                ) {
+
+                    Text(
+                        text = "Aceptar",
+                        color = RojoError,
+                        fontWeight = FontWeight.Bold
+                    )
+                }
+            }
         )
     }
 
     if (mostrarExito) {
         AlertDialog(
-            onDismissRequest = { mostrarExito = false },
-            confirmButton = {
-                TextButton(onClick = { mostrarExito = false }) {
-                    Text("OK")
-                }
+            onDismissRequest = {
+                mostrarExito = false
             },
-            title = { Text("Éxito") },
-            text = { Text(mensajeExito) }
+
+            containerColor = FondoDialog,
+
+            shape = RoundedCornerShape(20.dp),
+
+            title = {
+                Text(
+                    text = "Ingreso exitoso",
+                    color = VerdeOscuro,
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 20.sp
+                )
+            },
+
+            text = {
+                Text(
+                    text = mensajeExito,
+                    color = GrisTexto
+                )
+            },
+
+            confirmButton = {
+
+                TextButton(
+                    onClick = {
+                        mostrarExito = false
+                    }
+                ) {
+
+                    Text(
+                        text = "Aceptar",
+                        color = VerdeFood,
+                        fontWeight = FontWeight.Bold
+                    )
+                }
+            }
         )
     }
 }

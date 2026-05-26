@@ -4,17 +4,17 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.systemBars
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.navigation.compose.*
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import com.example.t1grupo1.ui.theme.T1Grupo1Theme
+import com.example.t1grupo1.views.BarraDeCarga
+import com.example.t1grupo1.views.LoginScreen
+import com.example.t1grupo1.views.PantallaListaDetalle
+import com.example.t1grupo1.views.PantallaListaLugares
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,12 +26,20 @@ class MainActivity : ComponentActivity() {
 
                 NavHost(
                     navController = navController,
-                    startDestination = "login",
+                    startDestination = "PantallaDeCarga",
                     modifier = Modifier
                         .fillMaxSize()
                         .windowInsetsPadding(WindowInsets.systemBars)
                 ) {
-
+                    composable("PantallaDeCarga") {
+                        BarraDeCarga(
+                            onFinish = {
+                                navController.navigate("login") {
+                                    popUpTo("PantallaDeCarga") { inclusive = true }
+                                }
+                            }
+                        )
+                    }
                     composable("login") {
                         LoginScreen(
                             onIngresarClick = {
@@ -51,26 +59,10 @@ class MainActivity : ComponentActivity() {
 
                     composable("detail/{lugarId}") { backStack ->
                         val id = backStack.arguments?.getString("lugarId")?.toInt() ?: 0
-                        PantallaListaDetalle(id)
+                        PantallaListaDetalle(id, navController = navController)
                     }
                 }
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String, modifier:Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    T1Grupo1Theme {
-        Greeting("Android")
     }
 }

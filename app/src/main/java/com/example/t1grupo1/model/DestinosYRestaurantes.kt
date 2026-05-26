@@ -1,4 +1,4 @@
-package com.example.t1grupo1;
+package com.example.t1grupo1.model
 
 data class Comida(
         val id: Int,
