@@ -2,4 +2,19 @@
 <resources>
 
     <style name="Theme.T1Grupo1" parent="android:Theme.Material.Light.NoActionBar" />
+
+    <style name="Theme.T1Grupo1.Starting" parent="Theme.SplashScreen">
+
+        <item name="windowSplashScreenBackground">@color/white</item>
+
+        <item name="windowSplashScreenAnimatedIcon">
+            @drawable/logo_food_travel_app_splashscreen
+        </item>
+
+        <item name="postSplashScreenTheme">
+            @style/Theme.T1Grupo1
+        </item>
+
+    </style>
+
 </resources>
