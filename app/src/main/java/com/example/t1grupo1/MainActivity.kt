@@ -4,9 +4,12 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
+import androidx.compose.foundation.layout.systemBars
+import androidx.compose.foundation.layout.windowInsetsPadding
+import androidx.navigation.compose.*
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -19,11 +22,19 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             T1Grupo1Theme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
+                val navController = rememberNavController()
+
+                NavHost(navController = navController, startDestination = "lista",modifier= Modifier.fillMaxSize().windowInsetsPadding(
+                    WindowInsets.systemBars)) {
+
+                    composable("lista") {
+                        PantallaListaLugares(navController)
+                    }
+
+                    composable("detail/{lugarId}") { backStack ->
+                        val id = backStack.arguments?.getString("lugarId")?.toInt() ?: 0
+                        PantallaListaDetalle(id)
+                    }
                 }
             }
         }
@@ -31,7 +42,7 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
+fun Greeting(name: String, modifier:Modifier = Modifier) {
     Text(
         text = "Hello $name!",
         modifier = modifier

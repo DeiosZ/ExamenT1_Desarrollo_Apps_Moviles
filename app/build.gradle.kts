@@ -55,4 +55,8 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
     debugImplementation(libs.androidx.compose.ui.tooling)
+    //implementaciones
+    implementation("io.coil-kt:coil-compose:2.5.0")      // Carga de imágenes desde URL
+    implementation("androidx.navigation:navigation-compose:2.7.7")  // Navegacion
+    implementation("androidx.compose.material:material-icons-extended") //Iconos
 }
