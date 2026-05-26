@@ -24,8 +24,26 @@ class MainActivity : ComponentActivity() {
             T1Grupo1Theme {
                 val navController = rememberNavController()
 
-                NavHost(navController = navController, startDestination = "lista",modifier= Modifier.fillMaxSize().windowInsetsPadding(
-                    WindowInsets.systemBars)) {
+                NavHost(
+                    navController = navController,
+                    startDestination = "login",
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .windowInsetsPadding(WindowInsets.systemBars)
+                ) {
+
+                    composable("login") {
+                        LoginScreen(
+                            onIngresarClick = {
+                                navController.navigate("lista") {
+                                    popUpTo("login") { inclusive = true }
+                                }
+                            },
+                            onRegistrarClick = {
+                                println("Registrar presionado")
+                            }
+                        )
+                    }
 
                     composable("lista") {
                         PantallaListaLugares(navController)
