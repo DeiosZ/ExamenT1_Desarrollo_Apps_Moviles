@@ -1,4 +1,4 @@
-package com.example.t1grupo1
+package com.example.grupo2foodtravelapp
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -10,18 +10,18 @@ import androidx.compose.foundation.layout.systemBars
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.navigation.compose.*
 import androidx.compose.ui.Modifier
-import com.example.t1grupo1.ui.theme.T1Grupo1Theme
-import com.example.t1grupo1.views.BarraDeCarga
-import com.example.t1grupo1.views.LoginScreen
-import com.example.t1grupo1.views.PantallaListaDetalle
-import com.example.t1grupo1.views.PantallaListaLugares
+import com.example.grupo2foodtravelapp.ui.theme.Grupo2FoodTravelAppTheme
+import com.example.grupo2foodtravelapp.views.BarraDeCarga
+import com.example.grupo2foodtravelapp.views.LoginScreen
+import com.example.grupo2foodtravelapp.views.PantallaListaDetalle
+import com.example.grupo2foodtravelapp.views.PantallaListaLugares
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            T1Grupo1Theme {
+            Grupo2FoodTravelAppTheme() {
                 val navController = rememberNavController()
 
                 NavHost(

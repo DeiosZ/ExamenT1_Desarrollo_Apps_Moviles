@@ -1,4 +1,4 @@
-package com.example.t1grupo1
+package com.example.grupo2foodtravelapp
 
 import org.junit.Test
 

@@ -1,4 +1,4 @@
-package com.example.t1grupo1.views
+package com.example.grupo2foodtravelapp.views
 
 import android.util.Patterns
 import androidx.compose.foundation.Image
@@ -35,8 +35,8 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.t1grupo1.R
-import com.example.t1grupo1.ui.theme.*
+import com.example.grupo2foodtravelapp.R
+import com.example.grupo2foodtravelapp.ui.theme.*
 
 
 @Composable
@@ -70,7 +70,7 @@ fun LoginScreen(
         Spacer(modifier = Modifier.height(2.dp))
 
         Text(
-            text = "FOOD TRAVEL APP",
+            text = "Grupo2-FOOD TRAVEL APP",
             fontSize = 26.sp,
             fontWeight = FontWeight.Bold,
             textAlign = TextAlign.Center,

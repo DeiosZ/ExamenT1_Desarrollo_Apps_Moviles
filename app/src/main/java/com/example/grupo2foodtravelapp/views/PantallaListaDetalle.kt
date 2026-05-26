@@ -1,4 +1,4 @@
-package com.example.t1grupo1.views
+package com.example.grupo2foodtravelapp.views
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -20,10 +20,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
-import com.example.t1grupo1.components.BarraSuperior
-import com.example.t1grupo1.model.ComidaData
-import com.example.t1grupo1.model.LugarData
-import com.example.t1grupo1.ui.theme.*
+import com.example.grupo2foodtravelapp.components.BarraSuperior
+import com.example.grupo2foodtravelapp.model.ComidaData
+import com.example.grupo2foodtravelapp.model.LugarData
+import com.example.grupo2foodtravelapp.ui.theme.*
 
 @Composable
 fun PantallaListaDetalle(

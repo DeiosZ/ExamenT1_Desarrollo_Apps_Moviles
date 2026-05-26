@@ -1,4 +1,4 @@
-package com.example.t1grupo1.components
+package com.example.grupo2foodtravelapp.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -18,7 +18,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.t1grupo1.ui.theme.VerdeFood
+import com.example.grupo2foodtravelapp.ui.theme.VerdeFood
 
 @Composable
 fun BarraSuperior(
@@ -52,7 +52,7 @@ fun BarraSuperior(
         }
 
         Text(
-            text = "Grupo1App",
+            text = "Grupo2-FoodTravelApp",
             color = Color.White,
             fontSize = 20.sp,
             fontWeight = FontWeight.Bold,

@@ -1,4 +1,4 @@
-package com.example.t1grupo1.model
+package com.example.grupo2foodtravelapp.model
 
 data class Comida(
         val id: Int,
